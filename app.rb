@@ -1,4 +1,5 @@
 require 'sinatra'
+require './lib/menu'
 require './lib/item'
 
 get '/' do
