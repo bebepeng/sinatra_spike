@@ -5,5 +5,5 @@ get '/' do
 end
 
 get '/items' do
-
+  erb :items
 end
