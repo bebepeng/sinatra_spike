@@ -10,7 +10,7 @@
 
   <% menu = Menu.new.get_menu('./config/menu.csv') %>
   <% menu.each do |item| %>
-    <% if item.name.include?(@searched) %>
+    <% if item.name.include?(@searched.to_s) %>
       <li><%= item.name %> - <a href='/item/<%= item.id %>'>Show Item</a></li>
     <% end %>
   <% end %>
