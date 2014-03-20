@@ -7,5 +7,7 @@ get '/' do
 end
 
 get '/items' do
+  @searched = params[:filter]
   erb :items
 end
+
