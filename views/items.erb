@@ -6,14 +6,21 @@
 <a href='/items/new'>New Item</a>
 
 <ul>
-  You searched for: <%= @searched %>
+  <% if @searched = nil %>
+    You searched for: <%= @searched %>
+  <% end %>
 
-  <% menu = Menu.new.get_menu('./config/menu.csv') %>
-  <% menu.each do |item| %>
+  <% menu = Menu.new('./config/menu.csv') %>
+  <% if @name != nil %>
+    <% menu.add_item(@name) %>
+  <% end %>
+  <% menu_array = menu.get_menu %>
+  <% menu_array.each do |item| %>
     <% if item.name.downcase.include?(@searched.to_s.downcase) %>
       <li><%= item.name %> - <a href='/item/<%= item.id %>'>Show Item</a></li>
     <% end %>
   <% end %>
+
 </ul>
 </body>
 </html>

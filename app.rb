@@ -11,3 +11,11 @@ get '/items' do
   erb :items
 end
 
+get '/items/new' do
+  erb :create_items
+end
+
+post '/items' do
+  @name = params[:name]
+  erb :items
+end
