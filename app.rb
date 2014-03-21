@@ -19,3 +19,8 @@ post '/items' do
   @name = params[:name]
   erb :items
 end
+
+get '/items/:id' do
+  @id = params[:id]
+  erb :item_by_id
+end

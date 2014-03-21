@@ -1,0 +1,13 @@
+<html>
+<head>
+  <title>Item <%= @id %></title>
+</head>
+<body>
+<% menu_array = Menu.new('./config/menu.csv').get_menu %>
+<% menu_array.each do |item| %>
+  <% if item.id == @id %>
+    <h1>Showing item: <%= item.name %></h1>
+  <% end %>
+<% end %>
+</body>
+</html>
