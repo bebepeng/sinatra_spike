@@ -1,0 +1,20 @@
+<html>
+<head>
+  <title>Item Form</title>
+</head>
+<body>
+<% if @id != nil %>
+  <form action='/items/<%= @id %>' method='post'>
+<% else %>
+  <form action='/items' method='post'>
+<% end %>
+<div>
+  <label for="name">Name of Dish:</label>
+  <input type="text" placeholder="enter name" name="name"/>
+</div>
+<div>
+  <input type="submit" value="Confirm" id="submit"/>
+</div>
+</form>
+</body>
+</html>

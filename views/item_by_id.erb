@@ -3,10 +3,20 @@
   <title>Item <%= @id %></title>
 </head>
 <body>
-<% menu_array = Menu.new('./config/menu.csv').get_menu %>
+<% menu = Menu.new('./config/menu.csv') %>
+<% menu_array = menu.get_menu %>
 <% menu_array.each do |item| %>
   <% if item.id == @id %>
-    <h1>Showing item: <%= item.name %></h1>
+    <% if @name != nil %>
+      <% menu.edit_item(@name,@id) %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% menu_array = menu.get_menu %>
+<% menu_array.each do |item| %>
+  <% if item.id == @id %>
+    <h1>Showing item: <%= item.name %> - <a href="/items/<%= @id %>/edit">Edit Item</a></h1>
   <% end %>
 <% end %>
 </body>

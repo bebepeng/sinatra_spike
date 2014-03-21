@@ -12,7 +12,7 @@ get '/items' do
 end
 
 get '/items/new' do
-  erb :create_items
+  erb :item_form
 end
 
 post '/items' do
@@ -22,5 +22,16 @@ end
 
 get '/items/:id' do
   @id = params[:id]
+  erb :item_by_id
+end
+
+get '/items/:id/edit' do
+  @id = params[:id]
+  erb :item_form
+end
+
+post '/items/:id' do
+  @id = params[:id]
+  @name = params[:name]
   erb :item_by_id
 end
