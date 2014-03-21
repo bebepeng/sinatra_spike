@@ -17,7 +17,7 @@
   <% menu_array = menu.get_menu %>
   <% menu_array.each do |item| %>
     <% if item.name.downcase.include?(@searched.to_s.downcase) %>
-      <li><%= item.name %> - <a href='/item/<%= item.id %>'>Show Item</a></li>
+      <li><%= item.name %> - <a href='/items/<%= item.id %>'>Show Item</a></li>
     <% end %>
   <% end %>
 
