@@ -17,7 +17,11 @@ class Menu
 
   def add_item(name)
     CSV.open(@file, 'a+') do |csv|
-      csv << ["#{name.to_s}", "#{@menu_list[-1]["id"].to_i + 1}",]
+      if @menu_list[0] == nil
+        csv << ["#{name.to_s}", "1",]
+      else
+        csv << ["#{name.to_s}", "#{@menu_list[-1]["id"].to_i + 1}",]
+      end
     end
     @menu_list = CSV.read(@file, headers: true)
   end
@@ -46,8 +50,8 @@ class Menu
       csv << %w(name id)
       @menu_list.each do |row|
         if row["id"] != id.to_s
-        csv << row
-          end
+          csv << row
+        end
       end
     end
     @menu_list = CSV.read(@file, headers: true)
