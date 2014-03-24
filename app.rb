@@ -35,3 +35,10 @@ post '/items/:id' do
   @name = params[:name]
   erb :item_by_id
 end
+
+delete '/items/:id' do
+  @id = params[:id]
+  menu = Menu.new('./config/menu.csv')
+  menu.delete_item(@id)
+  redirect '/items'
+end

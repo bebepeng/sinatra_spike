@@ -39,4 +39,17 @@ class Menu
     end
     @menu_list = CSV.read(@file, headers: true)
   end
+
+  def delete_item(id)
+
+    CSV.open(@file, 'w') do |csv|
+      csv << %w(name id)
+      @menu_list.each do |row|
+        if row["id"] != id.to_s
+        csv << row
+          end
+      end
+    end
+    @menu_list = CSV.read(@file, headers: true)
+  end
 end

@@ -8,7 +8,7 @@
 <% menu_array.each do |item| %>
   <% if item.id == @id %>
     <% if @name != nil %>
-      <% menu.edit_item(@name,@id) %>
+      <% menu.edit_item(@name, @id) %>
     <% end %>
   <% end %>
 <% end %>
@@ -16,7 +16,13 @@
 <% menu_array = menu.get_menu %>
 <% menu_array.each do |item| %>
   <% if item.id == @id %>
-    <h1>Showing item: <%= item.name %> - <a href="/items/<%= @id %>/edit">Edit Item</a></h1>
+    <h1>Showing item: <%= item.name %> - <a href="/items/<%= @id %>/edit">Edit Item</a>
+      <form action="/items/<%= @id %>" method='post'  >
+      <div>
+        <input type="hidden" name="_method" value="delete"/>
+        <input type="submit" value="Delete Item"/>
+      </div>
+    </h1>
   <% end %>
 <% end %>
 </body>
