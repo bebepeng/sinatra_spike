@@ -22,7 +22,20 @@ end
 
 get '/items/:id' do
   @id = params[:id]
-  erb :item_by_id
+  has_id = false
+  menu_list = CSV.read("./config/menu.csv")
+  menu_list.each do |row|
+    if row.include?("#{@id}")
+      has_id = true
+    end
+  end
+
+  if has_id
+    erb :item_by_id
+  else
+    erb :not_found
+  end
+
 end
 
 get '/items/:id/edit' do
